@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # install docker
-wget -qO- https://get.docker.com/ | sh
+curl -s https://get.docker.com/ | sh
 
 
 # install docker-compose
