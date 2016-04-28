@@ -4,6 +4,10 @@ services:
     container_name: web_projectname
   php:
     container_name: php_projectname
+    environment:
+        PROJECT_DEBUG: 1
+        PROJECT_ENV: dev
+
   db:
     container_name: db_projectname
     volumes:

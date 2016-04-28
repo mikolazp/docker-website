@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+cur_dir=$(dirname $0)
+
+chmod 0777 $cur_dir/../../www/_protected/backend/runtime
+chmod 0777 $cur_dir/../../www/_protected/api/runtime
+chmod 0777 $cur_dir/../../www/_protected/frontend/runtime
+chmod 0777 $cur_dir/../../www/assets
+chmod 0777 $cur_dir/../../www/backend/assets
+
+
+$cur_dir/composer install
+
+$cur_dir/../wait_db
+$cur_dir/yii migrate
+

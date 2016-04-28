@@ -45,6 +45,8 @@ WORKDIR /www
 #RUN usermod -u 1000 www-data
 
 ENV TERM xterm
+ENV PROJECT_DEBUG 1
+ENV PROJECT_ENV dev
 
 EXPOSE 9000
 

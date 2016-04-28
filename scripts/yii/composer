@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+docker exec -ti $(docker-compose ps | egrep "^php_*" | awk '{print $1}') composer "$@"
+
