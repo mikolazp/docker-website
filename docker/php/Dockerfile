@@ -25,6 +25,9 @@ RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-di
         && docker-php-ext-install pdo_mysql \
         && docker-php-ext-install intl
 
+# set timezone
+RUN echo "Europe/Vilnius" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
+
 #Composer
 RUN curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer \
