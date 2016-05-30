@@ -1,4 +1,4 @@
-FROM php:7.0.6-fpm
+FROM php:7.0.7-fpm
 
 #ADD sources.list /etc/apt/sources.list
 RUN apt-get update && apt-get install -y --no-install-recommends --no-install-suggests \
@@ -49,6 +49,7 @@ RUN echo "Europe/Vilnius" > /etc/timezone && dpkg-reconfigure -f noninteractive 
 #ADD php-fpm.conf /usr/local/etc/php-fpm.conf
 
 ADD crontab /etc/crontab
+RUN chmod 600 /etc/crontab
 
 
 WORKDIR /www

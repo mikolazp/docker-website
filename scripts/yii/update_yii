@@ -11,6 +11,6 @@ chmod 0777 $cur_dir/../../www/backend/assets
 
 $cur_dir/composer install
 
-$cur_dir/../wait_db
+$cur_dir/../system/wait_db
 $cur_dir/yii migrate
 

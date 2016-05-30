@@ -1,7 +1,8 @@
 version: '2'
 services:
   web:
-    image: nginx:1.10
+    image: nginx:1.11
+    container_name: web_projectname
     restart: always
     ports:
         - "8080:80"
@@ -13,8 +14,10 @@ services:
         - ./www:/www
     links:
         - php
+
   php:
     build: ./docker/php
+    container_name: php_projectname
     restart: always
     depends_on:
         - db
@@ -25,8 +28,10 @@ services:
         - ./docker/php/php-fpm.conf:/usr/local/etc/php-fpm.conf
         - ./docker/php/supervisor/conf.d:/etc/supervisor/conf.d
         - ./www:/www
+
   db:
-    image: mysql:5.7
+    image: mysql:5.7.12
+    container_name: db_projectname
     restart: always
 #    ports:
 #        - "33060:3306"
@@ -34,10 +39,20 @@ services:
         - /var/db/projectname:/var/lib/mysql
         - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
     environment:
-        MYSQL_ROOT_PASSWORD: secret
+        MYSQL_ROOT_PASSWORD: sa4djhDjsdErwhecdsd8sD
         MYSQL_USER: user
-        MYSQL_PASSWORD: password
+        MYSQL_PASSWORD: sa4djhDjhecdsd8sD
         MYSQL_DATABASE: app
+
+  phpmyadmin:
+      build: ./docker/phpmyadmin/
+      restart: always
+      links:
+          - db
+      ports:
+          - "8081:80"
+      environment:
+         - MYSQL_HOST=db
   sphinx:
     build: ./docker/sphinx
     depends_on:

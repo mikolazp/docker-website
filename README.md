@@ -6,8 +6,8 @@ linux, nginx, mysql, php, sphinx
 
 git clone https://github.com/mikolazp/docker-website.git
 
-./docker-website/scripts/install_docker.sh;
+./docker-website/scripts/system/install_docker.sh;
 cd ./docker-website;
-./run.sh;
+./update.sh;
 
 

@@ -1,0 +1,8 @@
+version: '2'
+services:
+  php:
+    environment:
+        PROJECT_DEBUG: 0
+        PROJECT_ENV: prod
+    volumes:
+        - ./docker/php/php-prod.ini:/usr/local/etc/php/php.ini
