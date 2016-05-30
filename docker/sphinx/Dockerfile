@@ -17,7 +17,7 @@ RUN	buildDeps='software-properties-common python-software-properties' \
 	&& apt-get update && apt-get install -y $buildDeps --no-install-recommends \
 	&& add-apt-repository -y ppa:builds/sphinxsearch-rel22 \
 	&& apt-get update \
-	&& apt-get install -y sphinxsearch curl \
+	&& apt-get install -y sphinxsearch curl mc \
 	&& mv -f /etc/sphinxsearch/sphinx.conf /etc/sphinxsearch/origin.sphinx.conf \
 	&& apt-get purge -y --auto-remove $buildDeps \
 	&& rm -rf /var/lib/apt/lists/* \
@@ -28,6 +28,8 @@ RUN	buildDeps='software-properties-common python-software-properties' \
 COPY ./entrypoint.sh /sbin/entrypoint.sh
 RUN chmod 755 /sbin/entrypoint.sh
 COPY ./sphinx.conf /etc/sphinxsearch/sphinx.conf
+
+ENV TERM xterm
 
 EXPOSE 9312 9306
 VOLUME ["${SPHINX_DATA_DIR}"]

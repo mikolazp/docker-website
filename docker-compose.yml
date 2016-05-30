@@ -55,6 +55,7 @@ services:
          - MYSQL_HOST=db
   sphinx:
     build: ./docker/sphinx
+    container_name: sphinx_projectname
     depends_on:
         - db
     links:
