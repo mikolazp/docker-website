@@ -38,6 +38,7 @@ services:
     volumes:
         - /var/db/projectname:/var/lib/mysql
         - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+        - ./docker/mysql/mysql.sh:/root/mysql.sh
     environment:
         MYSQL_ROOT_PASSWORD: sa4djhDjsdErwhecdsd8sD
         MYSQL_USER: user
