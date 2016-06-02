@@ -71,14 +71,26 @@ import_backup()
 
 if [[ ${SPHINX_MODE} == indexing ]]; then
 
-    while ! curl -s http://db:3306 > /dev/null
-    do
-      echo "$(date) - still trying"
-      sleep 1
-    done
-    echo "$(date) - connected successfully"
+    SPHINX_DATA_DIR=${SPHINX_DATA_DIR};
 
- indexer --config ${SPHINX_CONF} --all
+    # if data not exist, then index it
+
+    if [ "$(ls -A $SPHINX_DATA_DIR)" ]; then
+        echo "Data already indexed"
+    else
+        echo "Need index";
+
+        while ! curl -s http://db:3306 > /dev/null
+        do
+            echo "$(date) - still trying"
+            sleep 1
+        done
+        echo "$(date) - connected successfully"
+
+        indexer --config ${SPHINX_CONF} --all
+    fi
+
+
 fi
 
 if [[ ${SPHINX_MODE} == backup ]]; then

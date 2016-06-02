@@ -54,18 +54,19 @@ services:
           - "8081:80"
       environment:
          - MYSQL_HOST=db
-  sphinx:
-    build: ./docker/sphinx
-    container_name: sphinx_projectname
-    depends_on:
-        - db
-    links:
-        - db
-    restart: unless-stopped
-    volumes:
-        - ./docker/sphinx/sphinx.conf:/etc/sphinxsearch/sphinx.conf
-    environment:
-        SPHINX_MODE: indexing
+
+#  sphinx:
+#    build: ./docker/sphinx
+#    container_name: sphinx_projectname
+#    depends_on:
+#        - db
+#    links:
+#        - db
+#    restart: unless-stopped
+#    volumes:
+#        - ./docker/sphinx/sphinx.conf:/etc/sphinxsearch/sphinx.conf
+#    environment:
+#        SPHINX_MODE: indexing
 
 
 #export TERM=xterm
