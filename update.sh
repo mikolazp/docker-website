@@ -2,6 +2,7 @@
 
 git pull origin master
 
+sudo docker-compose pull
 sudo docker-compose build
 sudo docker-compose stop
 sudo docker-compose up -d
